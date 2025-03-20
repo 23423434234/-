@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,15 +14,16 @@
       "@type": "Blog",
       "name": "学生博客",
       "description": "分享学生学习技巧和校园生活指南",
-      "url": "https://example.com",
-      "image": "宝马.jpg",
+      "url": "https://example.com",  /* 替换为你的博客网址 */
+      "image": "宝马.jpg", /* 替换为你的logo或主要图片 */
       "author": {
         "@type": "Person",
-        "name": "你的名字或组织名称"  /* 这里填写你的名字或者组织名称 */
+        "name": "你的名字或组织名称"
       }
     }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <!-- 预加载资源 -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="main.js" as="script">
     <!-- 网站图标 -->
@@ -42,16 +42,17 @@
         <div class="navbar-header">
             <img src="宝马.jpg" width="177" height="100" alt="用户头像" class="avatar" loading="lazy">
             <a href="#" class="navbar-brand">学生博客</a>
+            <!-- 移动端菜单切换按钮 -->
             <button class="navbar-toggle" aria-expanded="false" aria-controls="primary-nav__menu">
                 <span class="sr-only">菜单</span>
                 <!-- 使用 SVG 图标代替文本“菜单” -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
 
         <nav>
             <ul role="menubar" id="primary-nav__menu" class="primary-nav__menu">
-                <li role="none"><a role="menuitem" href="#main-content">首页</a></li>  <!-- 链接文本已更改 -->
+                <li role="none"><a role="menuitem" href="#main-content">首页</a></li>
                 <li role="none" class="dropdown">
                     <a role="menuitem" href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">学生服务 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -62,16 +63,16 @@
                         <li role="none"><a role="menuitem" href="#">专升本</a></li>
                     </ul>
                 </li>
-                <li role="none"><a role="menuitem" href="#">关于我们</a></li> <!-- 添加“关于我们”链接 -->
-                <li role="none"><a role="menuitem" href="#">联系我们</a></li> <!-- 添加“联系我们”链接 -->
+                <li role="none"><a role="menuitem" href="#">关于我们</a></li>
+                <li role="none"><a role="menuitem" href="#">联系我们</a></li>
             </ul>
         </nav>
     </header>
 
-     <!-- 左侧边栏 -->
+     <!-- 左侧边栏 (PC 端) -->
     <aside class="sidebar">
         <img src="宝马.jpg" alt="用户头像" class="avatar" loading="lazy">
-        <h2 class="sidebar__title">个人中心</h2> <!-- 添加侧边栏标题 -->
+        <h2 class="sidebar__title">个人中心</h2>
         <ul class="sidebar__menu">
             <li><a href="#" class="sidebar__link">我的资料</a></li>
             <li><a href="#" class="sidebar__link">我的收藏</a></li>
@@ -88,7 +89,7 @@
 
     <main id="main-content" class="blog-main">
         <section class="blog-intro">
-             <!-- 添加带有备用文本的英雄图片 -->
+             <!-- 英雄图片区域 -->
             <div class="hero-image-container">
                 <img src="hero-image.jpg" alt="学生在图书馆学习" class="hero-image" loading="lazy">
                  <div class="hero-text">
@@ -99,6 +100,7 @@
         </section>
 
         <section class="blog-posts">
+            <!-- 使用 Schema.org 的 BlogPosting 类型标记每篇文章 -->
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
                 <h2 itemprop="headline"><a href="#" itemprop="url">如何高效学习？</a></h2>
                 <p itemprop="description">学习效率是学生成功的关键。本文将分享一些实用的学习技巧，帮助你事半功倍。</p>
@@ -110,16 +112,17 @@
                 <h2 itemprop="headline"><a href="#" itemprop="url">校园生活指南</a></h2>
                 <p itemprop="description">初入校园，如何快速适应新环境？本文将为你提供一些实用的建议。</p>
                 <a href="#" class="read-more" aria-label="阅读更多关于校园生活指南的文章">阅读更多</a>
-                <meta itemprop="datePublished" content="2024-07-26"> <!-- 示例日期 -->
+                <meta itemprop="datePublished" content="2024-07-26">
             </article>
 
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
                 <h2 itemprop="headline"><a href="#" itemprop="url">推荐的学习工具</a></h2>
                 <p itemprop="description">有哪些工具可以帮助学生更高效地完成任务？本文将为你推荐几款必备工具。</p>
                 <a href="#" class="read-more" aria-label="阅读更多关于推荐的学习工具的文章">阅读更多</a>
-                <meta itemprop="datePublished" content="2024-07-25"> <!-- 示例日期 -->
+                <meta itemprop="datePublished" content="2024-07-25">
             </article>
         </section>
+        <!-- 时事通讯订阅 -->
          <section class="newsletter-signup">
             <h2>订阅我们的时事通讯</h2>
             <p>获取最新的学习技巧、校园生活更新和独家资源。</p>
@@ -129,6 +132,7 @@
             </form>
         </section>
     </main>
+    <!-- 页脚 -->
     <footer class="footer">
         <p>© 2024 学生博客. 版权所有.</p>
         <nav aria-label="页脚导航">
