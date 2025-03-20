@@ -1,0 +1,74 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    }
+
+/* 头部导航栏 */
+.app-header {
+    background-color: #293241; /* 深灰蓝色 */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-header {
+    /* 品牌logo区域 */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 导航按钮区域 */
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav li {
+    margin: 0 10px;
+}
+
+.nav li a.btn {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ee6c4d; /* 活力橙色 */
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.nav li a.btn:hover {
+    background-color: #d95c3c; /* 更深的橙色 */
+}
+
+/* 主要内容区域 */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}

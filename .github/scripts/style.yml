@@ -1,6 +1,0 @@
-# styles/style.yml
-styles:
-  - name: "primary"
-    color: "#ff0000"
-  - name: "secondary"
-    color: "#00ff00"
