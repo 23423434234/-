@@ -1,19 +1,26 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 页面描述，用于搜索引擎优化 --> 
+    <!-- 页面描述，用于搜索引擎优化 -->
     <meta name="description" content="分享学生学习技巧、校园生活指南和实用工具的博客平台">
     <meta name="keywords" content="学生博客,学习技巧,校园生活,实用工具">
     <title>学生学习与生活指南 - 校园资源博客</title>
+    <!-- Schema.org 结构化数据 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "学生博客",
       "description": "分享学生学习技巧和校园生活指南",
-      "url": "https://example.com"
+      "url": "https://example.com",
+      "image": "宝马.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "你的名字或组织名称"  /* 这里填写你的名字或者组织名称 */
+      }
     }
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -21,25 +28,33 @@
     <link rel="preload" href="main.js" as="script">
     <!-- 网站图标 -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!--  (可选，但建议添加) 内容安全策略 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; ">
+    <!-- XSS 保护 -->
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 </head>
 <body>
     <!-- 跳过导航链接 -->
-    <a class="skip-link" href="#main-content">导航</a>
+    <a class="skip-link" href="#main-content">跳转到主要内容</a>
 
     <!-- 主导航 -->
     <header class="primary-nav" aria-label="主导航">
         <div class="navbar-header">
-            <img src="宝马.jpg" width="177" height="100" alt="用户头像" style="border-radius: 50%; object-fit: cover;" loading="lazy">
+            <img src="宝马.jpg" width="177" height="100" alt="用户头像" class="avatar" loading="lazy">
             <a href="#" class="navbar-brand">学生博客</a>
+            <button class="navbar-toggle" aria-expanded="false" aria-controls="primary-nav__menu">
+                <span class="sr-only">菜单</span>
+                <!-- 使用 SVG 图标代替文本“菜单” -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
+
         <nav>
-            <ul role="menubar" class="primary-nav__menu">
-                <li role="none"><a role="menuitem" href="#main-content">导航</a></li>
+            <ul role="menubar" id="primary-nav__menu" class="primary-nav__menu">
+                <li role="none"><a role="menuitem" href="#main-content">首页</a></li>  <!-- 链接文本已更改 -->
                 <li role="none" class="dropdown">
-                    <a role="menuitem" href="#" class="btn dropdown-toggle">学生服务</a>
-                    <ul class="dropdown-menu">
+                    <a role="menuitem" href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">学生服务 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
                         <li role="none"><a role="menuitem" href="#">工具</a></li>
                         <li role="none"><a role="menuitem" href="#">刷课</a></li>
                         <li role="none"><a role="menuitem" href="#">选课</a></li>
@@ -47,34 +62,81 @@
                         <li role="none"><a role="menuitem" href="#">专升本</a></li>
                     </ul>
                 </li>
+                <li role="none"><a role="menuitem" href="#">关于我们</a></li> <!-- 添加“关于我们”链接 -->
+                <li role="none"><a role="menuitem" href="#">联系我们</a></li> <!-- 添加“联系我们”链接 -->
             </ul>
         </nav>
     </header>
-    <div id="main-content" class="blog-main" style="margin: 0 auto; max-width: 800px; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <section class="blog-intro" style="text-align: center; margin-bottom: 20px;">
-            <h1 style="color: #333;">欢迎来到学生博客</h1>
-            <p style="color: #555;">在这里，我们分享学习技巧、校园生活指南和实用工具，帮助学生更好地成长。</p>
+
+     <!-- 左侧边栏 -->
+    <aside class="sidebar">
+        <img src="宝马.jpg" alt="用户头像" class="avatar" loading="lazy">
+        <h2 class="sidebar__title">个人中心</h2> <!-- 添加侧边栏标题 -->
+        <ul class="sidebar__menu">
+            <li><a href="#" class="sidebar__link">我的资料</a></li>
+            <li><a href="#" class="sidebar__link">我的收藏</a></li>
+            <li class="dropdown">
+                <a href="#" class="sidebar__link dropdown-toggle" aria-haspopup="true" aria-expanded="false">设置 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">账号设置</a></li>
+                    <li><a href="#">隐私设置</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="sidebar__link">退出登录</a></li>
+        </ul>
+    </aside>
+
+    <main id="main-content" class="blog-main">
+        <section class="blog-intro">
+             <!-- 添加带有备用文本的英雄图片 -->
+            <div class="hero-image-container">
+                <img src="hero-image.jpg" alt="学生在图书馆学习" class="hero-image" loading="lazy">
+                 <div class="hero-text">
+                    <h1>欢迎来到学生博客</h1>
+                    <p>在这里，我们分享学习技巧、校园生活指南和实用工具，帮助学生更好地成长。</p>
+                </div>
+            </div>
         </section>
 
         <section class="blog-posts">
-            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                <h2><a href="#" style="color: #007BFF; text-decoration: none;">如何高效学习？</a></h2>
-                <p style="color: #555;">学习效率是学生成功的关键。本文将分享一些实用的学习技巧，帮助你事半功倍。</p>
-                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 itemprop="headline"><a href="#" itemprop="url">如何高效学习？</a></h2>
+                <p itemprop="description">学习效率是学生成功的关键。本文将分享一些实用的学习技巧，帮助你事半功倍。</p>
+                <a href="#" class="read-more" aria-label="阅读更多关于如何高效学习？的文章">阅读更多</a>
+                <meta itemprop="datePublished" content="2024-07-27">  <!-- 示例日期 -->
             </article>
 
-            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                <h2><a href="#" style="color: #007BFF; text-decoration: none;">校园生活指南</a></h2>
-                <p style="color: #555;">初入校园，如何快速适应新环境？本文将为你提供一些实用的建议。</p>
-                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 itemprop="headline"><a href="#" itemprop="url">校园生活指南</a></h2>
+                <p itemprop="description">初入校园，如何快速适应新环境？本文将为你提供一些实用的建议。</p>
+                <a href="#" class="read-more" aria-label="阅读更多关于校园生活指南的文章">阅读更多</a>
+                <meta itemprop="datePublished" content="2024-07-26"> <!-- 示例日期 -->
             </article>
 
-            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                <h2><a href="#" style="color: #007BFF; text-decoration: none;">推荐的学习工具</a></h2>
-                <p style="color: #555;">有哪些工具可以帮助学生更高效地完成任务？本文将为你推荐几款必备工具。</p>
-                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 itemprop="headline"><a href="#" itemprop="url">推荐的学习工具</a></h2>
+                <p itemprop="description">有哪些工具可以帮助学生更高效地完成任务？本文将为你推荐几款必备工具。</p>
+                <a href="#" class="read-more" aria-label="阅读更多关于推荐的学习工具的文章">阅读更多</a>
+                <meta itemprop="datePublished" content="2024-07-25"> <!-- 示例日期 -->
             </article>
         </section>
-    </div>
+         <section class="newsletter-signup">
+            <h2>订阅我们的时事通讯</h2>
+            <p>获取最新的学习技巧、校园生活更新和独家资源。</p>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="输入您的邮箱" required aria-label="电子邮件">
+                <button type="submit">订阅</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2024 学生博客. 版权所有.</p>
+        <nav aria-label="页脚导航">
+          <ul>
+            <li><a href="/privacy">隐私政策</a></li>
+            <li><a href="/terms">服务条款</a></li>
+          </ul>
+        </nav>
+      </footer>
 </body>
 </html>

@@ -1,47 +1,68 @@
+/* styles.css */
+
 /* 全局样式 */
 body {
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 更现代的字体 */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* 更改为列布局 */
     background-color: #f4f4f4;
     line-height: 1.6;
+    color: #333; /* 更深的文本颜色以提高可读性 */
+}
+
+img.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    width: 100px; /* 设置特定宽度 */
+    height: 100px; /* 设置特定高度 */
 }
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: #4a90e2; /* 蓝色链接 */
+    transition: color 0.3s ease; /* 平滑的颜色过渡 */
 }
+
+a:hover {
+    color: #2a6496; /* 鼠标悬停时颜色更深 */
+}
+
 
 a:focus {
     outline: 2px solid #4a90e2;
     outline-offset: 2px;
 }
 
-/* 跳过导航链接 */
+/* 跳过链接 */
 .skip-link {
     position: absolute;
-    left: -999px;
-    top: -999px;
+    left: -9999px;
+    top: auto;
     background: #fff;
     color: #000;
     padding: 8px 16px;
     z-index: 1000;
+    border: 1px solid #000;  /* 添加边框 */
 }
 
 .skip-link:focus {
-    position: static;
-    left: auto;
-    top: auto;
+    position: fixed; /* 更改为 fixed */
+    left: 10px;  /* 在屏幕上定位 */
+    top: 10px;
 }
 
 /* 头部导航栏 */
 .primary-nav {
-    background-color: #293241; /* 深灰蓝色 */
+    background-color: #293241;
     color: #fff;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 轻微阴影 */
 }
 
 .navbar-header {
@@ -54,6 +75,7 @@ a:focus {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 .primary-nav__menu {
@@ -62,17 +84,17 @@ a:focus {
     gap: 1.5rem;
     margin: 0;
     padding: 0;
+    transition: transform 0.3s ease; /* 移动菜单的平滑过渡 */
+     transform-origin: top;
 }
 
-.primary-nav__menu li {
-    position: relative;
-}
 
 .primary-nav__menu a {
     color: #fff;
     font-size: 1rem;
     padding: 5px 10px;
     transition: background-color 0.3s ease;
+    display: block; /* 使链接填充列表项 */
 }
 
 .primary-nav__menu a:hover,
@@ -83,38 +105,112 @@ a:focus {
 
 /* 响应式导航 */
 .navbar-toggle {
-    display: none;
+    display: none; /* 默认隐藏 */
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0.5rem; /* 添加内边距 */
 }
 
 .navbar-toggle:focus {
     outline: 2px solid #4a90e2;
     outline-offset: 2px;
 }
+/* 屏幕阅读器专用类 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
 
+/* 移动导航样式 */
 @media (max-width: 768px) {
     .primary-nav__menu {
-        display: none;
+        display: none; /* 在较小屏幕上默认隐藏 */
         flex-direction: column;
         background-color: #293241;
         position: absolute;
-        top: 60px;
+        top: 60px; /* 根据您的标题高度进行调整 */
         left: 0;
         width: 100%;
         padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 轻微阴影 */
+
     }
 
     .primary-nav__menu.is-visible {
-        display: flex;
+        display: flex; /* 点击切换按钮时显示 */
+        transform: scaleY(1);  /* 使用 scaleY 实现更流畅的动画 */
     }
 
-    .navbar-toggle {
-        display: block;
+      .primary-nav {
+        flex-wrap: wrap; /* 允许项目在较小屏幕上换行*/
     }
+
+
+    .navbar-toggle {
+        display: block;  /* 在较小屏幕上显示 */
+    }
+    .sidebar {
+        display: none; /* 默认情况下在移动设备上隐藏侧边栏 */
+    }
+
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 250px;
+    background-color: #293241;
+    color: #fff;
+    height: 100vh;
+    position: fixed; /* 保持侧边栏固定 */
+    top: 0;
+    left: 0;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;  /* 确保它位于其他内容之上 */
+}
+
+.sidebar__title{
+    margin-bottom: 1rem;
+}
+
+.sidebar__menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    width: 100%;
+}
+
+.sidebar__menu li {
+    position: relative;
+    margin-bottom: 0.5rem; /* 在项目之间添加间距 */
+
+}
+
+.sidebar__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+.sidebar__link:hover,
+.sidebar__link:focus {
+    background-color: #4a90e2;
 }
 
 /* 下拉菜单样式 */
@@ -124,21 +220,25 @@ a:focus {
 
 .dropdown-toggle {
     cursor: pointer;
+    display: block; /* 确保它占据全部宽度 */
+    width: 100%; /* 全宽 */
+    text-align: left; /* 文本左对齐 */
 }
 
 .dropdown-menu {
-    display: none;
+    display: none; /* 默认隐藏 */
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #e0f7d4; /* 柔和的浅绿色 */
-    color: #000;
+    background-color: #3d4a5a;
+    color: #fff; /* 白色文本 */
     list-style: none;
     padding: 10px 0;
     margin: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     min-width: 150px;
+    border-radius: 4px; /* 圆角 */
 }
 
 .dropdown-menu li {
@@ -146,16 +246,157 @@ a:focus {
 }
 
 .dropdown-menu li a {
-    color: #000;
+    color: #fff; /* 白色文本 */
     text-decoration: none;
     display: block;
+      transition: background-color 0.3s ease; /* 平滑过渡 */
 }
 
 .dropdown-menu li a:hover {
-    background-color: #c3e6cb; /* 更加明显的浅绿色 */
+      background-color: #4a90e2; /* 一致的悬停颜色 */
 }
 
-/* 鼠标悬停显示下拉菜单 */
-.dropdown:hover .dropdown-menu {
+/* 鼠标悬停时显示下拉菜单 */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:focus-within { /* 键盘focus时也显示 */
     display: block;
+}
+
+/* 主要内容样式 */
+.blog-main {
+    margin-left: 270px; /* 根据侧边栏宽度 + 内边距进行调整 */
+    padding: 20px;
+    flex-grow: 1; /* 允许主要内容填充可用空间 */
+    min-height: calc(100vh - 60px); /* 确保它至少是视口高度 */
+}
+
+/* 博客介绍样式 */
+.blog-intro {
+     text-align: center; /* 居中对齐介绍文本 */
+    margin-bottom: 2rem;
+
+}
+.hero-image-container{
+    position: relative;
+}
+
+.hero-image {
+    width: 100%; /* 使图像响应式 */
+    height: auto; /* 保持纵横比 */
+    display: block; /* 删除图像下方的额外空间 */
+    max-height: 400px; /* 限制高度 */
+    object-fit: cover;  /* 覆盖容器区域 */
+    border-radius: 8px; /* 圆角 */
+}
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 80%;
+}
+
+
+/* 博客文章样式 */
+.blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 响应式网格 */
+    gap: 2rem;
+}
+
+.post {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡 */
+}
+.post:hover {
+    transform: translateY(-5px); /* 鼠标悬停时轻微抬起 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增加阴影 */
+}
+
+.post h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+
+.post p {
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block; /* 允许内边距和外边距 */
+    padding: 8px 16px;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none; /* 删除下划线 */
+      transition: background-color 0.3s ease; /* 平滑过渡 */
+}
+
+.read-more:hover {
+    background-color: #2a6496;
+}
+
+/* 时事通讯订阅样式 */
+.newsletter-signup {
+    background-color: #f8f8f8; /* 浅灰色背景 */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.newsletter-signup h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.newsletter-signup input[type="email"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 70%; /* 响应式宽度 */
+    max-width: 300px; /* 最大宽度 */
+
+}
+.newsletter-signup button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-signup button[type="submit"]:hover {
+    background-color: #2a6496;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #293241;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+     margin-top: auto;  /* 将页脚推到底部 */
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+
+}
+.footer li{
+   display: inline-block; /* 水平显示链接 */
+    margin: 0 10px;
+}
+.footer a{
+    color: #fff;
 }
