@@ -3,29 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的学生博客</title>
+    <!-- 页面描述，用于搜索引擎优化 --> 
+    <meta name="description" content="分享学生学习技巧、校园生活指南和实用工具的博客平台">
+    <meta name="keywords" content="学生博客,学习技巧,校园生活,实用工具">
+    <title>学生学习与生活指南 - 校园资源博客</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "学生博客",
+      "description": "分享学生学习技巧和校园生活指南",
+      "url": "https://example.com"
+    }
+    </script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="main.js" as="script">
+    <!-- 网站图标 -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 </head>
 <body>
-    <header class="app-header navbar">
+    <!-- 跳过导航链接 -->
+    <a class="skip-link" href="#main-content">导航</a>
+
+    <!-- 主导航 -->
+    <header class="primary-nav" aria-label="主导航">
         <div class="navbar-header">
+            <img src="宝马.jpg" width="177" height="100" alt="用户头像" style="border-radius: 50%; object-fit: cover;" loading="lazy">
             <a href="#" class="navbar-brand">学生博客</a>
         </div>
-        <div class="navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#" class="btn">学生服务</a></li>
-                <li><a href="#" class="btn">工具</a></li>
-                <li><a href="#" class="btn">刷课</a></li>
-                <li><a href="#" class="btn">选课</a></li>
-                <li><a href="#" class="btn">校园跑</a></li>
-                <li><a href="#" class="btn">专升本</a></li>
+        <nav>
+            <ul role="menubar" class="primary-nav__menu">
+                <li role="none"><a role="menuitem" href="#main-content">导航</a></li>
+                <li role="none" class="dropdown">
+                    <a role="menuitem" href="#" class="btn dropdown-toggle">学生服务</a>
+                    <ul class="dropdown-menu">
+                        <li role="none"><a role="menuitem" href="#">工具</a></li>
+                        <li role="none"><a role="menuitem" href="#">刷课</a></li>
+                        <li role="none"><a role="menuitem" href="#">选课</a></li>
+                        <li role="none"><a role="menuitem" href="#">校园跑</a></li>
+                        <li role="none"><a role="menuitem" href="#">专升本</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
+        </nav>
     </header>
+    <div id="main-content" class="blog-main" style="margin: 0 auto; max-width: 800px; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <section class="blog-intro" style="text-align: center; margin-bottom: 20px;">
+            <h1 style="color: #333;">欢迎来到学生博客</h1>
+            <p style="color: #555;">在这里，我们分享学习技巧、校园生活指南和实用工具，帮助学生更好地成长。</p>
+        </section>
 
-    <div class="container">
-        <h1>欢迎来到我的学生博客</h1>
-        <p>这里可以发布一些学习、生活相关的内容。</p>
+        <section class="blog-posts">
+            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h2><a href="#" style="color: #007BFF; text-decoration: none;">如何高效学习？</a></h2>
+                <p style="color: #555;">学习效率是学生成功的关键。本文将分享一些实用的学习技巧，帮助你事半功倍。</p>
+                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            </article>
+
+            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h2><a href="#" style="color: #007BFF; text-decoration: none;">校园生活指南</a></h2>
+                <p style="color: #555;">初入校园，如何快速适应新环境？本文将为你提供一些实用的建议。</p>
+                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            </article>
+
+            <article class="post" style="margin-bottom: 20px; padding: 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h2><a href="#" style="color: #007BFF; text-decoration: none;">推荐的学习工具</a></h2>
+                <p style="color: #555;">有哪些工具可以帮助学生更高效地完成任务？本文将为你推荐几款必备工具。</p>
+                <a href="#" class="read-more" style="color: #007BFF; text-decoration: underline;">阅读更多</a>
+            </article>
+        </section>
     </div>
 </body>
 </html>
