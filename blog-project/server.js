@@ -65,6 +65,9 @@ app.post('/api/messages', (req, res) => {
 });
 
 // 启动服务器
-app.listen(PORT, () => {
-  console.log(`服务器运行在 http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`服务器运行在 http://localhost:${PORT}`);
+// });
+export async function handleRequest(request) {
+    return app.handle(request)
+}
