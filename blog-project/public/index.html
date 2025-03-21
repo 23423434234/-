@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板博客</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>留言板博客</h1>
+  </header>
+  <main>
+    <section id="messages">
+      </section>
+    <form id="message-form">
+      <h2>发表留言</h2>
+      <div id="error-display" style="color: red;"></div>
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name" required>
+      <label for="content">留言：</label>
+      <textarea id="content" name="content" required></textarea>
+      <button type="submit">提交</button>
+    </form>
+  </main>
+  <footer>
+    <p>© 2023 留言板博客</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
